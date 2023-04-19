@@ -2,26 +2,33 @@
 body {
     display: flex;
     flex-direction: column;
-    width: 680px;
+    width: 960px;
     padding: 48px;
 }
- 
+
+.title {
+    text-align: center;
+    font-size: 32px;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 680px;  
+    border: 1px solid;
+    position: relative;
+    width: 960px;  
+    height: 960px;
+    
 }
 
 .square {
-    border: 1px solid black;
-    height: 40px;
-    width: 40px;
+    outline: 1px solid black;
+    flex:6.25%;
+    
 }
 
 .squareInput {
     flex: 1;
-    height: 30px;
-    width: 100px;
     align-self: center;
-    margin-bottom: 32px;   
+    margin-bottom: 32px;  
 }
