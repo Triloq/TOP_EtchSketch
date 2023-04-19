@@ -1,21 +1,32 @@
 
+@font-face {
+    font-family: "Eroded";
+    src: url("fonts/eroded-67474/ErodedPersonalUseRegular-Eaepe.ttf");
+}
+
 body {
     display: flex;
     flex-direction: column;
     width: 960px;
     padding: 48px;
+    background-color: rgba(56, 98, 138, 0.842);
+    color: white;
 }
 
 .title {
+    flex: 1;
+    font-family: Eroded,'Times New Roman', Times, serif;
     text-align: center;
-    font-size: 32px;
+    font-size: 64px;
+    justify-self: center;
+    align-self: center;
+    margin: auto auto 8px;
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid;
-    position: relative;
     width: 960px;  
     height: 960px;
     
@@ -23,12 +34,23 @@ body {
 
 .square {
     outline: 1px solid rgba(94, 196, 154, 10%);
-    background-color: rgba(0,0,0,0%);
+    background-color: rgba(255, 255, 255, 100%);
     flex:6.25%;
+}
+
+.promptText {
+    flex: 1;
+    align-self: center;
+    margin-bottom: 5px; 
+    font-size: 32px;
 }
 
 .squareInput {
     flex: 1;
     align-self: center;
+    justify-self: center;
     margin-bottom: 32px;  
+    font-size: 32px;
+    background-color: rgb(204, 220, 235);
+    color:rgb(65, 71, 77)
 }

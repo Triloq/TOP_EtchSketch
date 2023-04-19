@@ -1,9 +1,11 @@
 
 // Set initial grid and point to #container
-let numberDivs = 16;
+let numberDivs = 32;
 const container = document.querySelector("div");
+
 // initialize grid of squares
 createGrid(numberDivs);
+
 // Button prompt to get number of squares
 const buttonPrompt = document.querySelector("button.squareInput");
 buttonPrompt.addEventListener("click", function(e) {
@@ -13,15 +15,10 @@ buttonPrompt.addEventListener("click", function(e) {
     // reestablish mouseover listener
     mouseoverSet(divs);
 })
+
 // setup the the inital grid
 let divs = document.querySelectorAll('div.square');
-divs.forEach(square => {
-    let newAlpha = 0;
-    square.addEventListener("mouseover", function(e) {       
-        newAlpha = changeColor(square, newAlpha);
-        square.style.backgroundColor = `rgba(0,0,0,${newAlpha}%`;
-    })  
-})
+mouseoverSet(divs);
 
 // Create the grid based on the number input by the user
 function createGrid(numberDivs){
@@ -41,7 +38,7 @@ function createGrid(numberDivs){
 
 // Button prompts the user for number of squares to create
 function btnPrompt(){
-    numberDivs = prompt("Set the Number of Columns (100 Max)");
+    numberDivs = prompt("Set the Number of Columns (100 Max)","32");
     if (numberDivs > 0 && numberDivs <= 100){
         createGrid(numberDivs);
         return numberDivs;
@@ -51,18 +48,20 @@ function btnPrompt(){
     }
 }
 
+// Apply listeners and events to each square
 function mouseoverSet (divs){ 
     divs.forEach(square => {
-        let newAlpha = 0;
+        let newColor = 255;
         square.addEventListener("mouseover", function(e) {       
-            newAlpha = changeColor(square, newAlpha);
-            square.style.backgroundColor = `rgba(0,0,0,${newAlpha}%`;
+            newColor = changeColor(newColor);
+            square.style.backgroundColor = `rgba(${newColor},${newColor},${newColor})`;
         })  
     })
 }
 
-function changeColor (square, alpha) {
-    const incrementedAlpha = 10;
-    newAlpha = alpha + incrementedAlpha
-    return newAlpha; 
+// Increment the opacity
+function changeColor (color) {
+    const incrementedColor = Math.floor(255/10);
+    newColor = color - incrementedColor;
+    return newColor; 
 }
