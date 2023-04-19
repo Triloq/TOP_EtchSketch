@@ -13,22 +13,18 @@ buttonPrompt.addEventListener("click", function(e) {
     // reestablish mouseover listener
     mouseoverSet(divs);
 })
-
-// point to all the divs in the grid
+// setup the the inital grid
 let divs = document.querySelectorAll('div.square');
-
 divs.forEach(square => {
     let newAlpha = 0;
     square.addEventListener("mouseover", function(e) {       
         newAlpha = changeColor(square, newAlpha);
         square.style.backgroundColor = `rgba(0,0,0,${newAlpha}%`;
-    })
-    
+    })  
 })
 
 // Create the grid based on the number input by the user
 function createGrid(numberDivs){
-
     let squareTotal = numberDivs**2;
     while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -38,8 +34,6 @@ function createGrid(numberDivs){
         div.classList.add('square');
         //changing the dimensions based on number of divs
         div.style.flex = (1/numberDivs*100)+"%";
-        // set start bg
-        div.style.backgroundColor = 'rgba(0,0,0,0%';
         //appending the grid
         container.appendChild(div);
     }
@@ -57,11 +51,13 @@ function btnPrompt(){
     }
 }
 
-function mouseoverSet (divs){
+function mouseoverSet (divs){ 
     divs.forEach(square => {
-        square.addEventListener("mouseover", function(e) {
-            square.style.backgroundColor = "black";
-        })      
+        let newAlpha = 0;
+        square.addEventListener("mouseover", function(e) {       
+            newAlpha = changeColor(square, newAlpha);
+            square.style.backgroundColor = `rgba(0,0,0,${newAlpha}%`;
+        })  
     })
 }
 
