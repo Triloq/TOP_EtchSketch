@@ -22,9 +22,9 @@ body {
 }
 
 .square {
-    outline: 1px solid black;
+    outline: 1px solid rgba(94, 196, 154, 10%);
+    background-color: rgba(0,0,0,0%);
     flex:6.25%;
-    
 }
 
 .squareInput {

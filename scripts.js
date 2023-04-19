@@ -18,8 +18,10 @@ buttonPrompt.addEventListener("click", function(e) {
 let divs = document.querySelectorAll('div.square');
 
 divs.forEach(square => {
-    square.addEventListener("mouseover", function(e) {
-        square.style.backgroundColor = "black";
+    let newAlpha = 0;
+    square.addEventListener("mouseover", function(e) {       
+        newAlpha = changeColor(square, newAlpha);
+        square.style.backgroundColor = `rgba(0,0,0,${newAlpha}%`;
     })
     
 })
@@ -36,6 +38,8 @@ function createGrid(numberDivs){
         div.classList.add('square');
         //changing the dimensions based on number of divs
         div.style.flex = (1/numberDivs*100)+"%";
+        // set start bg
+        div.style.backgroundColor = 'rgba(0,0,0,0%';
         //appending the grid
         container.appendChild(div);
     }
@@ -43,9 +47,14 @@ function createGrid(numberDivs){
 
 // Button prompts the user for number of squares to create
 function btnPrompt(){
-    numberDivs = prompt();
-    createGrid(numberDivs);
-    return numberDivs;
+    numberDivs = prompt("Set the Number of Columns (100 Max)");
+    if (numberDivs > 0 && numberDivs <= 100){
+        createGrid(numberDivs);
+        return numberDivs;
+    }
+    else {
+        btnPrompt();
+    }
 }
 
 function mouseoverSet (divs){
@@ -54,4 +63,10 @@ function mouseoverSet (divs){
             square.style.backgroundColor = "black";
         })      
     })
+}
+
+function changeColor (square, alpha) {
+    const incrementedAlpha = 10;
+    newAlpha = alpha + incrementedAlpha
+    return newAlpha; 
 }
